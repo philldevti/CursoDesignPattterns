@@ -6,6 +6,15 @@ namespace CursoDesignPatterns
 {
 	public class ICPP : TemplateDeImpostoCondicional
 	{
+		public ICPP():base()
+		{
+
+		}
+
+		public ICPP(Imposto outroImposto) : base(outroImposto)
+		{
+
+		}
 		public double Calcula(Orcamento orcamento)
 		{
 			if (orcamento.Valor > 500)

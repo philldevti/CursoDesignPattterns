@@ -6,6 +6,15 @@ namespace CursoDesignPatterns
 {
 	public class IKCV : TemplateDeImpostoCondicional
 	{
+		public IKCV():base()
+		{
+
+		}
+
+		public IKCV(Imposto outroImposto) : base(outroImposto)
+		{
+
+		}
 		
 		public override bool DeveUsarMaximaTaxacao(Orcamento orcamento)
 		{
