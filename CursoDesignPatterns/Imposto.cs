@@ -21,8 +21,7 @@ namespace CursoDesignPatterns
 
 		protected double CalculoOutroImposto(Orcamento orcamento)
 		{
-			if (OutroImposto == null) return 0;
-			return OutroImposto.Calcula(orcamento);
+			return (OutroImposto == null) ? 0 : OutroImposto.Calcula(orcamento);
 		}
 	}
 }
