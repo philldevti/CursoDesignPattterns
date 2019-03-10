@@ -6,7 +6,7 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-			Imposto iss = new ISS(new ICMS());
+			Imposto iss = new ISS(new ICMS(new IMA()));
 
 			Orcamento orcamento = new Orcamento(500);
 			

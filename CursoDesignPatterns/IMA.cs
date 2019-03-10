@@ -4,20 +4,20 @@ using System.Text;
 
 namespace CursoDesignPatterns
 {
-	public class ICMS : Imposto
+	public class IMA : Imposto
 	{
-		public ICMS(Imposto outroImposto): base(outroImposto)
+		public IMA(Imposto outroImposto):base(outroImposto)
 		{
 
 		}
-		public ICMS():base()
+		public IMA() : base()
 		{
 
 		}
 
 		public override double Calcula(Orcamento orcamento)
 		{
-			return orcamento.Valor * 0.1 + CalculoOutroImposto(orcamento);
+			return (orcamento.Valor * 0.2 ) + CalculoOutroImposto(orcamento);
 		}
 	}
 }
