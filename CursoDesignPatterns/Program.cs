@@ -6,31 +6,19 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-			Orcamento reforma = new Orcamento(500);
+			NotaFiscalBuilder criador = new NotaFiscalBuilder();
 
-			reforma.AplicaDescontoExtra();
-			Console.WriteLine(reforma.Valor);
+			NotaFiscal nota = criador.ParaEmpresa("TESTE")
+			.ComCnpj("123456789")
+			.ComItem(new ItemDaNota("Item 1", 100.0))
+			.ComItem(new ItemDaNota("Item 2", 200.0))
+			.NaDataAtual()
+			.ComObservacoes("CONSTRUINDO UMA NOTA FISCAL").Constroi();
 
-			reforma.Aprova();
-			reforma.AplicaDescontoExtra();
-			Console.WriteLine(reforma.Valor);
+			Console.WriteLine(nota.ValorBruto);
+			Console.WriteLine(nota.DataDeEmissao);
 
-			reforma.Finaliza();
-			Console.WriteLine(reforma.Valor);
-
-
-			Conta conta = new Conta();
-
-			Console.WriteLine(conta.MostraSaldo());
-			conta.Deposita(100);
-			Console.WriteLine(conta.MostraSaldo());
-			conta.Saca(50);
-			Console.WriteLine(conta.MostraSaldo());
-			conta.Saca(51);
-			Console.WriteLine(conta.MostraSaldo());
-			conta.Saca(100);
-			Console.WriteLine(conta.MostraSaldo());
 			Console.ReadKey();
-        }
+		}
     }
 }
