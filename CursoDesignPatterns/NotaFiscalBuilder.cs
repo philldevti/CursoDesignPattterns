@@ -17,7 +17,7 @@ namespace CursoDesignPatterns
 
 		public NotaFiscalBuilder()
 		{
-			this.Data = DateTime.Now;
+			this.DataAtual = DateTime.Now;
 		}
 
 		public NotaFiscalBuilder ParaEmpresa(string razaoSocial)
@@ -33,7 +33,7 @@ namespace CursoDesignPatterns
 			return this;
 		}
 
-		public NotaFiscalBuilder ComItem(ItemDaNota item) {
+		public NotaFiscalBuilder ComI(ItemDaNota item) {
 			todosItens.Add(item);
 			valorTotal += item.Valor;
 			impostos += item.Valor * 0.05;
