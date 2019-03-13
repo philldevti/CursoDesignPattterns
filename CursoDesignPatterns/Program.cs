@@ -17,8 +17,19 @@ namespace CursoDesignPatterns
 
 			reforma.Finaliza();
 			Console.WriteLine(reforma.Valor);
-			reforma.Aprova();
 
+
+			Conta conta = new Conta();
+
+			Console.WriteLine(conta.MostraSaldo());
+			conta.Deposita(100);
+			Console.WriteLine(conta.MostraSaldo());
+			conta.Saca(50);
+			Console.WriteLine(conta.MostraSaldo());
+			conta.Saca(51);
+			Console.WriteLine(conta.MostraSaldo());
+			conta.Saca(100);
+			Console.WriteLine(conta.MostraSaldo());
 			Console.ReadKey();
         }
     }
