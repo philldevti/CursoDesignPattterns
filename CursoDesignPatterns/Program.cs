@@ -12,7 +12,7 @@ namespace CursoDesignPatterns
 			.ComCnpj("123456789")
 			.ComItem(new ItemDaNota("Item 1", 100.0))
 			.ComItem(new ItemDaNota("Item 2", 200.0))
-			.NaDataAtual()
+			.NaData()
 			.ComObservacoes("CONSTRUINDO UMA NOTA FISCAL").Constroi();
 
 			Console.WriteLine(nota.ValorBruto);

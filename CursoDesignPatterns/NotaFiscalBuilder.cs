@@ -15,6 +15,11 @@ namespace CursoDesignPatterns
 
 		private IList<ItemDaNota> todosItens = new List<ItemDaNota>();
 
+		public NotaFiscalBuilder()
+		{
+			this.Data = DateTime.Now;
+		}
+
 		public NotaFiscalBuilder ParaEmpresa(string razaoSocial)
 		{
 			this.RazaoSocial = razaoSocial;
@@ -42,8 +47,8 @@ namespace CursoDesignPatterns
 			return this;
 		}
 
-		public NotaFiscalBuilder NaDataAtual() {
-			this.DataAtual = DateTime.Now;
+		public NotaFiscalBuilder NaData(DateTime novaData) {
+			this.DataAtual = novaData;
 
 			return this;
 		}
