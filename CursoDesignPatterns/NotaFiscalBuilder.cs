@@ -16,8 +16,9 @@ namespace CursoDesignPatterns
 		private IList<ItemDaNota> todosItens = new List<ItemDaNota>();
 
 		private IList<AcaoAposGerarNota> todasAcoesASeremExecutadas = new List<AcaoAposGerarNota>();
-		public NotaFiscalBuilder()
+		public NotaFiscalBuilder(IList<AcaoAposGerarNota> lista)
 		{
+			this.todasAcoesASeremExecutadas = lista;
 			this.DataAtual = DateTime.Now;
 		}
 
