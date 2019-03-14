@@ -6,7 +6,7 @@ namespace CursoDesignPatterns
 	public class NotaFiscalBuilder
 	{
 		public string RazaoSocial { get; set; }
-		public string Cnpj { get;  set; }
+		public string Cnpj { get; set; }
 
 		private double valorTotal { get; set; }
 		private double impostos { get; set; }
@@ -15,9 +15,15 @@ namespace CursoDesignPatterns
 
 		private IList<ItemDaNota> todosItens = new List<ItemDaNota>();
 
+		private IList<AcaoAposGerarNota> todasAcoesASeremExecutadas = new List<AcaoAposGerarNota>();
 		public NotaFiscalBuilder()
 		{
 			this.DataAtual = DateTime.Now;
+		}
+
+		public void AdicionaAcao(AcaoAposGerarNota novaAcao)
+		{
+			todasAcoesASeremExecutadas.Add(novaAcao);
 		}
 
 		public NotaFiscalBuilder ParaEmpresa(string razaoSocial)
@@ -33,7 +39,8 @@ namespace CursoDesignPatterns
 			return this;
 		}
 
-		public NotaFiscalBuilder ComI(ItemDaNota item) {
+		public NotaFiscalBuilder ComI(ItemDaNota item)
+		{
 			todosItens.Add(item);
 			valorTotal += item.Valor;
 			impostos += item.Valor * 0.05;
@@ -41,20 +48,30 @@ namespace CursoDesignPatterns
 			return this;
 		}
 
-		public NotaFiscalBuilder ComObservacoes(string observacoes) {
+		public NotaFiscalBuilder ComObservacoes(string observacoes)
+		{
 			this.Observacoes = observacoes;
 
 			return this;
 		}
 
-		public NotaFiscalBuilder NaData(DateTime novaData) {
+		public NotaFiscalBuilder NaData(DateTime novaData)
+		{
 			this.DataAtual = novaData;
 
 			return this;
 		}
 
-		public NotaFiscal Constroi() {
-			return new NotaFiscal(RazaoSocial, Cnpj, DataAtual, valorTotal, impostos, todosItens, Observacoes);
+		public NotaFiscal Constroi()
+		{
+			NotaFiscal nf = new NotaFiscal(RazaoSocial, Cnpj, DataAtual, valorTotal, impostos, todosItens, Observacoes); ;
+
+			foreach (AcaoAposGerarNota acao in todasAcoesASeremExecutadas)
+			{
+				acao.Executa(nf);
+			}
+
+			return nf;
 		}
 	}
 }
