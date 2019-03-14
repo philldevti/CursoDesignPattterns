@@ -16,6 +16,7 @@ namespace CursoDesignPatterns
 			criador.AdicionaAcao(new EnviadorDeEmail());
 			criador.AdicionaAcao(new NotaFiscalDao());
 			criador.AdicionaAcao(new EnviadorPorSms());
+			criador.AdicionaAcao(new Multiplicador(100));
 
 			NotaFiscal nota = criador.Constroi();
 			Console.WriteLine(nota.ValorBruto);
